@@ -53,7 +53,7 @@ passing the names of the database parameters file and your desired output file
 (`models.json` here):
 
 ```sh
-npx @aponica/mysql-schema-js mysql.json models.json
+npx @aponica/mysqlgoose-schema-js mysql.json models.json
 ```  
 
 ### Step 3: Create Models
