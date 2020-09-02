@@ -1,6 +1,6 @@
 {
   "name": "@aponica/mysqlgoose-js",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "MongoDB/MongooseJS-like interface for MySQL relational databases (and probably MariaDB/Oracle/PostgreSQL/SQLServer/etc with some modification)",
   "homepage": "https://aponica.com/docs/mysqlgoose-js/",
   "keywords": [
