@@ -63,7 +63,7 @@ definitions file to create the models you'll need:
  
 ```javascript
 const fs = require( 'fs' );
-const Mysqlgoose = require( 'mysqlgoose-js' );
+const Mysqlgoose = require( '@aponica/mysqlgoose-js' );
 
 const goose = new Mysqlgoose();
 await goose.connect( JSON.parse( require('fs').readFileSync('mysql.json' ) ) );
@@ -73,8 +73,7 @@ const defs = JSON.parse( require('fs').readFileSync('models.json' ) );
 
 for ( let [ table, def ] of Object.entries( defs ) )
   if ( '//' !== table ) // skip comment member
-    models[ table ] =
-      iMysqlgoose.model( table, new Mysqlgoose.Schema( def ) );
+    models[ table ] = goose.model( table, new Mysqlgoose.Schema( def ) );
 ```
 
 ### Step 4: Use Models as with MongooseJS
@@ -91,7 +90,7 @@ const found = await models.customer.findById( cust.id );
 
 const same = await models.customer.findOne( { phone: '123-456-7890' } );
 
-const johns = await models.customer.find( { name: { $regex: /^John / } } );
+const johns = await models.customer.find( { name: { $regex: '^John ' } } );
 
 await models.customer.findByIdAndUpdate( cust.id, { phone: '123-456-1111' } ); 
 ```
@@ -116,7 +115,7 @@ table names as the `Mysqlgoose.POPULATE` option:
 //  retrieve the order_product and associated order & product rows.
 
 const ordprod = 
-  await hModels.order_product.findById( 123, null, 
+  await models.order_product.findById( 123, null, 
     { [ Mysqlgoose.POPULATE ]: [ 'order', 'product' ] } );
 ```
 
