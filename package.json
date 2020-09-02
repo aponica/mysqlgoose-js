@@ -1,0 +1,38 @@
+{
+  "name": "@aponica/mysqlgoose-js",
+  "version": "0.1.0",
+  "description": "MongoDB/MongooseJS-like interface for MySQL relational databases (and probably MariaDB/Oracle/PostgreSQL/SQLServer/etc with some modification)",
+  "homepage": "https://aponica.com/docs/mysqlgoose-js/",
+  "keywords": [
+    "mysqlgoose",
+    "mysql",
+    "mongodb",
+    "mongoose",
+    "mongoosejs",
+    "database",
+    "rdbms",
+    "mariadb",
+    "postgresql",
+    "sqlserver"
+  ],
+  "main": "./index.js",
+  "scripts": {
+    "doc": "node ./node_modules/.bin/jsdoc -c jsdoc.conf.json",
+    "test": "node ./node_modules/.bin/jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "author": "Opplaud LLC <dev.support@aponica.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "sprintf-js": "^1.1.2"
+  },
+  "devDependencies": {
+    "@aponica/jsdoc-plugin-linecomments": "^1.0.12",
+    "jest": "^26.4.2",
+    "jsdoc": "^3.6.5"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "opts": {
+    "destination": "../com-aponica/GENDOCS/mysqlgoose-js",
+    "access": "public"
+    },
+  "plugins": [
+    "@aponica/jsdoc-plugin-linecomments",
+    "plugins/markdown"
+    ],
+  "source": {
+    "include": [ "./README.md", ".", "./lib" ]
+    }
+}
