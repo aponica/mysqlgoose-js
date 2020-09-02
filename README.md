@@ -22,7 +22,7 @@ however, there's enough to get by.
 ## Installation
 
 ```sh
-npm i @aponica/mongoose-js
+npm i @aponica/mysqlgoose-js
 ```
 
 <a name="usage"></a>
