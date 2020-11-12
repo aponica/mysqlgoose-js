@@ -1,18 +1,18 @@
 # @aponica/mysqlgoose-js
 
-MongoDB/MongooseJS-like interface for MySQL relational databases (and
-probably MariaDB/PostgreSQL/Oracle/SQLServer/etc with some modification).
+Use [MySQL](https://www.mysql.com/) in much the same way as 
+[MongoDB](https://www.mongodb.com/) and [MongooseJS](https://mongoosejs.com/).
 
-This module was created in appreciation for the abstraction provided by
-MongoDB and MongoooseJS, and to access MySQL data in a consistent manner.
+For anyone who likes the interface to Mongo(ose) and wants to use MySQL (and 
+probably other relational databases like MariaDB, PostgreSQL, Oracle or
+SQLServer, with some modification) in a consistent manner. 
 
-Because the library uses prepared statements under the covers, it also
-protects against SQL injection attacks and other problems caused by malformed 
-queries.
+Easily protects against SQL injection attacks and other problems caused by 
+malformed queries (by using prepared statements under the covers)!
 
 The interface is as close as possible to that provided by MongooseJS. 
-Classes and methods typically have the same names, and arguments appear in 
-the same order. 
+Public classes and methods typically have the same names, and arguments 
+appear in the same order. 
 
 **Only a subset of the features provided by MongooseJS are currently 
 supported,** and not always in a fully-compatible way.  For most cases, 
@@ -41,7 +41,7 @@ database connection parameters as expected by:
 "user":"mysqlgoose_tester"}
 ```
 
-### Step 2: Generate Schemas
+### Step 2: Generate Definitions
 
 Because MySQL table schemas are predefined in the database, the definitions
 can be stored in a JSON document before your application runs, eliminating the
@@ -50,10 +50,10 @@ time needed to introspect the database every time.
 To do this, run 
 [@aponica/mysqlgoose-schema-js](https://aponica.com/docs/mysqlgoose-schema-js),
 passing the names of the database parameters file and your desired output file
-(`models.json` here):
+(`definitions.json` here):
 
 ```sh
-npx @aponica/mysqlgoose-schema-js mysql.json models.json
+npx @aponica/mysqlgoose-schema-js mysql.json definitions.json
 ```  
 
 ### Step 3: Create Models
@@ -66,10 +66,10 @@ const fs = require( 'fs' );
 const Mysqlgoose = require( '@aponica/mysqlgoose-js' );
 
 const goose = new Mysqlgoose();
-await goose.connect( JSON.parse( require('fs').readFileSync('mysql.json' ) ) );
+await goose.connect( JSON.parse( fs.readFileSync( 'mysql.json' ) ) );
 
 const models = {};
-const defs = JSON.parse( require('fs').readFileSync('models.json' ) );
+const defs = JSON.parse( fs.readFileSync( 'definitions.json' ) );
 
 for ( let [ table, def ] of Object.entries( defs ) )
   if ( '//' !== table ) // skip comment member
@@ -102,7 +102,7 @@ table as a nested object of the current table. This happens automatically when
 you use the referenced table in the filter; for example:
 
 ```javascript
-//  retrieve the order row and its associated customer row.
+//  retrieve the order rows, each with embedded customer row.
 
 const orders = 
   await models.order.find( { customer: { phone: '123-456-7890' } } );
@@ -112,7 +112,7 @@ You can also explicitly request the nested objects by specifying the desired
 table names as the `Mysqlgoose.POPULATE` option:
 
 ```javascript
-//  retrieve the order_product and associated order & product rows.
+//  retrieve the order_product with embedded order & product row.
 
 const ordprod = 
   await models.order_product.findById( 123, null, 
@@ -120,9 +120,9 @@ const ordprod =
 ```
 
 Unfortunately, it's not (currently) possible to populate in the other
-direction. For example, it would not be possible to populate all of the
-`order_product` records associated with a particular `order`, because
-the `order` table would not have a foreign key suitable for finding them.
+direction; for example, when you find `order` records, you can't populate
+the associated `order_product` records. Hopefully, someone will add this
+capability in the future!
 
 
 ## Please Donate!
@@ -171,4 +171,3 @@ MIT License.
 ## Related Links
 
 [Online Documentation](https://aponica.com/docs/mysqlgoose-js/)
-# mysqlgoose-js
