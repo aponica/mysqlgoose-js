@@ -5,7 +5,6 @@
 const kFs = require( 'fs' );
 const kcMysqlgoose = require( '../lib/Mysqlgoose.js' );
 
-let hConfig = null;
 const hiModels = {};
 
 module.exports = () => new Promise( fResolve => {
@@ -20,7 +19,7 @@ module.exports = () => new Promise( fResolve => {
     () => { // connection resolved
 
       const hhModelDefs = JSON.parse( kFs.readFileSync(
-        'tests-config/models.json', { encoding: 'utf8' } ) );
+        'tests-config/definitions.json', { encoding: 'utf8' } ) );
 
       for ( zName in hhModelDefs )
         if ( hhModelDefs.hasOwnProperty( zName ) && ( '//' !== zName ) )
