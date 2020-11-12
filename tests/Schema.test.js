@@ -13,6 +13,8 @@ const kiSqlstring = require('sqlstring');
 
 test( 'eachPath', () => {
 
+  const hProto = { hInherited: {} };
+
   const hhDocDef = {
     nId: { zType: 'int', bPrimary: true },
     zName: { zType: 'varchar' }
@@ -26,11 +28,13 @@ test( 'eachPath', () => {
       hhExpect[ zKey ].zSafeColumnName = kiSqlstring.escapeId( zKey );
       }
 
+  Object.setPrototypeOf( hhDocDef, hProto );
+
   const iSchema = new kcSchema( hhDocDef );
 
   expect( iSchema.zIdField ).toBe( 'nId' );
 
-  Object.setPrototypeOf( iSchema.hhColDefs, { hInherited: {} } );
+  Object.setPrototypeOf( iSchema.hhColDefs, hProto );
 
   const hhEachResult = {};
   iSchema.eachPath( ( z, h ) => { hhEachResult[ z ] = h; } );
@@ -46,5 +50,3 @@ test( 'eachPath', () => {
   } ); // test(eachPath)
 
 // EOF
-
-
