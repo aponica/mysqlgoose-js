@@ -1,5 +1,5 @@
 //=============================================================================
-//  Copyright 2019-2020 Opplaud LLC and other contributors. MIT licensed.
+//  Copyright 2019-2021 Opplaud LLC and other contributors. MIT licensed.
 //=============================================================================
 
 const kcMysqlgoose = require( '../index' );

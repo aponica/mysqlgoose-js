@@ -1,5 +1,5 @@
 -- ============================================================================
--- Copyright 2019-2020 Opplaud LLC and other contributors. MIT licensed.
+-- Copyright 2019-2021 Opplaud LLC and other contributors. MIT licensed.
 -- ============================================================================
 
 CREATE DATABASE IF NOT EXISTS `mysqlgoose_test` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
