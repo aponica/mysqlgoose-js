@@ -127,12 +127,9 @@ capability in the future!
 
 ## Please Donate!
 
-[<img src="https://aponica.com/lib/helpinghand.png"
- class=leftimg>](https://www.paypal.com/biz/fund?id=BEHTAS8WARM68)
-
 Help keep a roof over our heads and food on our plates! 
-If you find aponica™ open source software useful, please 
-[click here](https://www.paypal.com/biz/fund?id=BEHTAS8WARM68) 
+If you find aponica® open source software useful, please 
+**[click here](https://www.paypal.com/biz/fund?id=BEHTAS8WARM68)** 
 to make a one-time or recurring donation via *PayPal*, credit 
 or debit card. Thank you kindly!
 
@@ -162,12 +159,25 @@ of programming experience.
 
 ## Copyright
 
-Copyright 2019-2020 Opplaud LLC and other contributors.
+Copyright 2019-2021 Opplaud LLC and other contributors.
 
 ## License
 
 MIT License.
 
+## Trademarks
+
+OPPLAUD and aponica are registered trademarks of Opplaud LLC.
+
 ## Related Links
 
-[Online Documentation](https://aponica.com/docs/mysqlgoose-js/)
+Official links for this project:
+
+* [Home Page & Online Documentation](https://aponica.com/docs/mysqlgoose-js/)
+* [GitHub Repository](https://github.com/aponica/mysqlgoose-js)
+* [NPM Package](https://www.npmjs.com/package/@aponica/mysqlgoose-js)
+  
+Related projects:
+
+* [@aponica/mysqlgoose-schema-js](https://aponica.com/docs/mysqlgoose-schema-js/)
+* [@mysqljs/mysql](https://github.com/mysqljs/mysql#readme)
